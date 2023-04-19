@@ -17,14 +17,12 @@ struct TitleValueCell: View {
                     Text("\(title):")
                         .font(.system(size: 18.0))
                         .foregroundColor(.ghost)
-                    
                     Spacer()
                 }
                 HStack {
                     Text(value)
                         .font(.system(size: 18.0).bold())
                         .foregroundColor(.silver)
-                    
                     Spacer()
                 }
             }

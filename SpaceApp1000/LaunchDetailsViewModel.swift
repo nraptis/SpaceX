@@ -16,7 +16,6 @@ actor LaunchDetailsViewModel: ObservableObject {
     
     @MainActor @Published var isLoadingLaunchpadDetails = false
     
-    
     init(launchListViewModel: LaunchListViewModel,
          network: NetworkController,
          launch: Launch,
@@ -36,7 +35,6 @@ actor LaunchDetailsViewModel: ObservableObject {
     }
     
     @MainActor func back() {
-     
         launchListViewModel.navigationPath.removeLast()
     }
     
@@ -45,7 +43,6 @@ actor LaunchDetailsViewModel: ObservableObject {
                                                             network: network,
                                                             rocket: rocket)
         launchListViewModel.navigationPath.append(rocketDetailsViewModel)
-        
     }
     
     @MainActor func select(launchpad: Launchpad) async {
@@ -62,7 +59,6 @@ actor LaunchDetailsViewModel: ObservableObject {
         if rocketSet.count > 0 {
             do {
                 let _rockets = try await network.rockets()
-                print("fetched _rockets: \(_rockets)")
                 for rocket in _rockets {
                     if rocketSet.contains(rocket.id) {
                         rockets.append(rocket)
@@ -83,7 +79,6 @@ actor LaunchDetailsViewModel: ObservableObject {
         if launchSet.count > 0 {
             do {
                 let _launches = try await network.launches()
-                print("fetched _launches: \(_launches)")
                 for launch in _launches {
                     if launchSet.contains(launch.id) {
                         launches.append(launch)
@@ -94,16 +89,12 @@ actor LaunchDetailsViewModel: ObservableObject {
             }
         }
         
-        print("Ended with \(rockets.count) rockets, \(launches.count) launches")
-        
         let launchpadDetailsViewModel = LaunchpadDetailsViewModel(launchListViewModel: launchListViewModel,
                                                                   network: network,
                                                                   launchpad: launchpad,
                                                                   rockets: rockets,
                                                                   launches: launches)
-        
         isLoadingLaunchpadDetails = false
-        
         launchListViewModel.navigationPath.append(launchpadDetailsViewModel)
     }
 }
@@ -119,7 +110,6 @@ extension LaunchDetailsViewModel: Hashable {
 }
 
 extension LaunchDetailsViewModel {
-    
     static func mock() -> LaunchDetailsViewModel {
         let launchListViewModel = LaunchListViewModel.mock()
         return LaunchDetailsViewModel(launchListViewModel: launchListViewModel,

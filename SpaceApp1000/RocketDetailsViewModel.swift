@@ -25,7 +25,6 @@ actor RocketDetailsViewModel: ObservableObject {
     }
     
     @MainActor func back() {
-     
         launchListViewModel.navigationPath.removeLast()
     }
 }
@@ -40,7 +39,6 @@ extension RocketDetailsViewModel: Hashable {
 }
 
 extension RocketDetailsViewModel {
-    
     static func mock() -> RocketDetailsViewModel {
         let launchListViewModel = LaunchListViewModel.mock()
         return RocketDetailsViewModel(launchListViewModel: launchListViewModel,

@@ -33,7 +33,6 @@ actor LaunchpadDetailsViewModel: ObservableObject {
     }
     
     @MainActor func back() {
-     
         launchListViewModel.navigationPath.removeLast()
     }
     
@@ -47,7 +46,6 @@ actor LaunchpadDetailsViewModel: ObservableObject {
                                                             rocket: rocket)
         launchListViewModel.navigationPath.append(rocketDetailsViewModel)
     }
-    
 }
 
 extension LaunchpadDetailsViewModel: Hashable {
@@ -61,7 +59,6 @@ extension LaunchpadDetailsViewModel: Hashable {
 }
 
 extension LaunchpadDetailsViewModel {
-    
     static func mock() -> LaunchpadDetailsViewModel {
         let launchListViewModel = LaunchListViewModel.mock()
         return LaunchpadDetailsViewModel(launchListViewModel: launchListViewModel,

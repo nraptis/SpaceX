@@ -16,9 +16,7 @@ struct LaunchpadDetailsView: View {
             }
             ScrollView {
                 VStack {
-                    
                     launchStatsView()
-                    
                     ForEach(launchpadDetailsViewModel.rockets) { rocket in
                         
                         Button {
@@ -38,7 +36,6 @@ struct LaunchpadDetailsView: View {
                         } label: {
                             LaunchCellView(launch: launch)
                         }
-                        
                     }
                 }
                 .padding(.vertical, 16.0)

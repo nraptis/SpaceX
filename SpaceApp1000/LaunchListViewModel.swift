@@ -51,7 +51,6 @@ actor LaunchListViewModel: ObservableObject {
             do {
                 let _rocket = try await network.rocket(id: rocketID)
                 rocket = _rocket
-                print("fetched rocket: \(_rocket)")
             } catch let error {
                 print("rocket fetch error: \(error.localizedDescription)")
             }
@@ -62,7 +61,6 @@ actor LaunchListViewModel: ObservableObject {
             do {
                 let _launchpad = try await network.launchpad(id: launchpadID)
                 launchpad = _launchpad
-                print("fetched launchpad: \(_launchpad)")
             } catch let error {
                 print("launchpad fetch error: \(error.localizedDescription)")
             }
@@ -73,14 +71,9 @@ actor LaunchListViewModel: ObservableObject {
                                                             launch: launch,
                                                             rocket: rocket,
                                                             launchpad: launchpad)
-        
         isFetchingLaunchDetails = false
-        
         navigationPath.append(launchDetailsViewModel)
     }
-    
-    
-    
 }
 
 extension LaunchListViewModel {

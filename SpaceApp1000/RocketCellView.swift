@@ -17,7 +17,6 @@ struct RocketCellView: View {
                         Text("Rocket")
                             .font(.system(size: 22.0).bold())
                             .foregroundColor(.obsidian)
-                        
                         Spacer()
                     }
                     HStack {
@@ -37,7 +36,6 @@ struct RocketCellView: View {
                 }
             }
             .padding(.all, 6.0)
-            
         }
         .background(RoundedRectangle(cornerRadius: 12.0).foregroundColor(.cerulean))
         .padding(.horizontal, 16.0)

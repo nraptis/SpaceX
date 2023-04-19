@@ -41,10 +41,7 @@ actor NetworkController {
         guard (200...299).contains(urlResponse.statusCode) else {
             throw URLError(.badServerResponse)
         }
-        print("got data: \(data.count)")
-        let rockets = try decoder.decode([Rocket].self, from: data)
-        print(rockets)
-        return rockets
+        return try decoder.decode([Rocket].self, from: data)
     }
     
     func rocket(id: String) async throws -> Rocket {
@@ -60,10 +57,7 @@ actor NetworkController {
         guard (200...299).contains(urlResponse.statusCode) else {
             throw URLError(.badServerResponse)
         }
-        print("got data: \(data.count)")
-        let rocket = try decoder.decode(Rocket.self, from: data)
-        print(rocket)
-        return rocket
+        return try decoder.decode(Rocket.self, from: data)
     }
     
     func launchpad(id: String) async throws -> Launchpad {
@@ -78,9 +72,6 @@ actor NetworkController {
         guard (200...299).contains(urlResponse.statusCode) else {
             throw URLError(.badServerResponse)
         }
-        print("got data: \(data.count)")
-        let launchpad = try decoder.decode(Launchpad.self, from: data)
-        print(launchpad)
-        return launchpad
+        return try decoder.decode(Launchpad.self, from: data)
     }
 }

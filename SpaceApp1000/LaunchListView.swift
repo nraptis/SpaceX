@@ -15,6 +15,7 @@ struct LaunchListView: View {
                 TitleBarView(title: "Launches",
                              backAction: nil)
                 
+                // NOTE: We would LOVE to use a list, which supports refresh, but this causes a memory retention problem.
                 /*
                 List(launchListViewModel.launches) { launch in
                     
@@ -32,7 +33,6 @@ struct LaunchListView: View {
                 .listStyle(.plain)
                 */
                 
-                
                 ScrollView {
                     LazyVStack {
                         ForEach(launchListViewModel.launches) { launch in
@@ -44,13 +44,10 @@ struct LaunchListView: View {
                             } label: {
                                 LaunchCellView(launch: launch)
                             }
-                            
-                            
                         }
                     }
                     .padding(.vertical, 16.0)
                 }
-                
             }
             .background(Color.midnight)
             

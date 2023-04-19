@@ -17,9 +17,7 @@ struct LaunchDetailsView: View {
                 }
                 ScrollView {
                     VStack {
-                        
                         launchStatsView()
-                        
                         if let rocket =
                             launchDetailsViewModel.rocket {
                             Button {
@@ -88,7 +86,6 @@ struct LaunchDetailsView: View {
                     TitleValueCell(title: "Details",
                                    value: details)
                 }
-                
                 Spacer()
                     .frame(height: 8.0)
             }
