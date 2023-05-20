@@ -14,29 +14,9 @@ struct LaunchListView: View {
             VStack(spacing: 0.0) {
                 TitleBarView(title: "Launches",
                              backAction: nil)
-                
-                // NOTE: We would LOVE to use a list, which supports refresh, but this causes a memory retention problem.
-                /*
-                List(launchListViewModel.launches) { launch in
-                    
-                    Button {
-                        Task {
-                            await launchListViewModel.select(launch: launch)
-                        }
-                    } label: {
-                        LaunchCellView(launch: launch)
-                    }
-                    .listRowInsets(EdgeInsets())
-                    .listRowSeparator(.hidden)
-                    
-                }
-                .listStyle(.plain)
-                */
-                
                 ScrollView {
                     LazyVStack {
                         ForEach(launchListViewModel.launches) { launch in
-                            
                             Button {
                                 Task {
                                     await launchListViewModel.select(launch: launch)
@@ -50,7 +30,6 @@ struct LaunchListView: View {
                 }
             }
             .background(Color.midnight)
-            
             if launchListViewModel.isFetchingLaunches ||
                 launchListViewModel.isFetchingLaunchDetails {
                 LoadingView()

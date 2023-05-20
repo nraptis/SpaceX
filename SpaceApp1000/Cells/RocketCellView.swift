@@ -27,7 +27,6 @@ struct RocketCellView: View {
                     }
                 }
                 .padding(.leading, 8.0)
-                
                 ZStack {
                     Image(systemName: "info.circle.fill")
                         .font(.system(size: 24.0))

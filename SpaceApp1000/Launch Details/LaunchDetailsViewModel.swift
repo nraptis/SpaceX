@@ -26,7 +26,6 @@ actor LaunchDetailsViewModel: ObservableObject {
         self.launch = launch
         self.rocket = rocket
         self.launchpad = launchpad
-        
         print("LaunchDetailsViewModel => Created")
     }
     

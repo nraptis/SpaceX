@@ -11,10 +11,8 @@ import SwiftUI
 actor LaunchListViewModel: ObservableObject {
     
     @MainActor @Published var navigationPath = NavigationPath()
-    
     @MainActor @Published var launches = [Launch]()
     @MainActor @Published var isFetchingLaunches = false
-    
     @MainActor @Published var didFailToFetchLaunches = false
     @MainActor @Published var isFetchingLaunchDetails = false
     
@@ -43,9 +41,7 @@ actor LaunchListViewModel: ObservableObject {
     }
     
     @MainActor func select(launch: Launch) async {
-        
         isFetchingLaunchDetails = true
-        
         var rocket: Rocket?
         if let rocketID = launch.rocket {
             do {

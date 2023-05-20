@@ -1,5 +1,5 @@
 //
-//  LaunchCell.swift
+//  LaunchpadCellView.swift
 //  SpaceApp1000
 //
 //  Created by Tiger Nixon on 4/13/23.
@@ -7,45 +7,42 @@
 
 import SwiftUI
 
-struct LaunchCellView: View {
-    let launch: Launch
+struct LaunchpadCellView: View {
+    let launchpad: Launchpad
     var body: some View {
         VStack {
             HStack {
                 VStack {
                     HStack {
-                        Text(launch.name)
+                        Text("Launchpad")
                             .font(.system(size: 22.0).bold())
-                            .foregroundColor(.ghost)
-                        
+                            .foregroundColor(.obsidian)
                         Spacer()
                     }
                     HStack {
-                        Text(Date.fromSpaceXString(string: launch.dateUtc)?.toYYYYMMDD() ?? "")
+                        Text(launchpad.name)
                             .font(.system(size: 18.0))
-                            .foregroundColor(.silver)
+                            .foregroundColor(.midnight)
                         Spacer()
                     }
                 }
                 .padding(.leading, 8.0)
-                
                 ZStack {
                     Image(systemName: "info.circle.fill")
                         .font(.system(size: 24.0))
                         .padding(.all, 8.0)
-                        .foregroundColor(.silver)
+                        .foregroundColor(.midnight)
                 }
             }
             .padding(.all, 6.0)
-            
         }
-        .background(RoundedRectangle(cornerRadius: 12.0).foregroundColor(.mauve))
+        .background(RoundedRectangle(cornerRadius: 12.0).foregroundColor(.magenta))
         .padding(.horizontal, 16.0)
     }
 }
 
-struct LaunchCellView_Previews: PreviewProvider {
+struct LaunchpadCellView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchCellView(launch: Launch.mock())
+        LaunchpadCellView(launchpad: Launchpad.mock())
     }
 }

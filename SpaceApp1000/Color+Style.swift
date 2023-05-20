@@ -17,5 +17,4 @@ extension Color {
     static let cerulean = Color("cerulean")
     static let silver = Color("silver")
     static let slate = Color("slate")
-    
 }

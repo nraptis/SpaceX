@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct SpaceApp1000App: App {
-    let launchListViewModel = LaunchListViewModel(network: NetworkController())
+    @StateObject var launchListViewModel = LaunchListViewModel(network: NetworkController())
     var body: some Scene {
         WindowGroup {
             RootNavigationView(launchListViewModel: launchListViewModel)

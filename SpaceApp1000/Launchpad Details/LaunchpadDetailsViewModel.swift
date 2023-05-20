@@ -24,7 +24,6 @@ actor LaunchpadDetailsViewModel: ObservableObject {
         self.launchpad = launchpad
         self.rockets = rockets
         self.launches = launches
-        
         print("LaunchpadDetailsViewModel => Created")
     }
     
@@ -37,7 +36,20 @@ actor LaunchpadDetailsViewModel: ObservableObject {
     }
     
     @MainActor func select(launch: Launch) async {
-        await launchListViewModel.select(launch: launch)
+        var rocket: Rocket?
+        if let rocketID = launch.rocket {
+            for _rocket in rockets {
+                if _rocket.id == rocketID {
+                    rocket = _rocket
+                }
+            }
+        }
+        let launchDetailsViewModel = LaunchDetailsViewModel(launchListViewModel: launchListViewModel,
+                                                            network: network,
+                                                            launch: launch,
+                                                            rocket: rocket,
+                                                            launchpad: launchpad)
+        launchListViewModel.navigationPath.append(launchDetailsViewModel)
     }
     
     @MainActor func select(rocket: Rocket) async {

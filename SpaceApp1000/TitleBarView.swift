@@ -55,7 +55,7 @@ struct TitleBarView: View {
 struct TitleBarView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TitleBarView(title: "Page 1 View Model") { }
+            TitleBarView(title: "Launches") { }
             Spacer()
         }
         .background(Color.midnight)
